@@ -1,0 +1,102 @@
+* {
+   box-sizing: border-box;
+   margin: 0;
+   padding: 0;
+   list-style: none;}
+
+html {
+   font-size: 10px;}
+
+body {
+   font-family: sans-serif;
+   background-color: #e4e4e4;
+   padding-bottom: 4rem;
+   position: relative;
+   overflow-x: hidden;}
+
+.container-shadow {
+   box-shadow: 0 2px 20px hsla(0,0%,0%,.15);}
+
+.noselect {
+   user-select: none;}
+
+/*    PANEL    */
+.panel {
+   background-color: white;
+   min-height: 20rem;
+   height: 60rem;
+   padding: 3rem;
+   position: absolute;
+   top: 0;
+   transition: transform 200ms ease;}
+
+.panel__section {
+   margin-bottom: 2.5rem;}
+
+.panel__heading {
+   font-weight: normal;
+   font-size: 2rem;
+   text-transform: uppercase;
+   text-align: center;
+   color: #333333;
+   margin-bottom: 1.5rem;}
+
+.panel__close-button {
+   background-repeat: no-repeat;
+   background-position: center center;
+   width: 3rem;
+   height: 100%; 
+   position: absolute;
+   top: 0;
+   cursor: pointer;}
+
+.panel__close-button--right {
+   background-image: url("images/leftArrow.png");
+   right: 0;}
+
+.panel__close-button--left {
+   background-image: url("images/rightArrow.png");
+   left: 0;}
+
+/*    PAINT CONTROLS    */
+.paint-controls-container {
+   border-top-right-radius: 10px;
+   border-bottom-right-radius: 10px;
+   left: 0;}
+
+.paint-controls__select {
+   padding: .5rem 1.6rem;
+   border-radius: 6rem;
+   display: block;}
+
+.paint-controls__color-list {
+   text-align: center;}
+
+.colors__item {
+   margin-bottom: 1rem;
+   padding: 2rem;
+   border: 2px solid #b6b6b6;
+   border-radius: 6rem;
+   display: inline-block;
+   cursor: pointer;
+   opacity: .7;
+   transition: opacity 200ms ease;}
+
+.colors__item:hover {
+   opacity: 1;}
+
+.colors__item--selected {
+   opacity: 1;}
+
+/*    USER DRAWS  */
+.user-draws-container {
+   border-top-left-radius: 10px;
+   border-bottom-left-radius: 10px;
+   right: 0;}
+
+/*    PAINT CANVAS   */
+.canvas-container canvas {
+   background-color: white;
+   margin: 4rem auto;
+   display: block;}
+
