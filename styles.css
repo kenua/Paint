@@ -9,10 +9,10 @@ html {
 
 body {
    font-family: sans-serif;
-   background-color: #e4e4e4;
-   padding-bottom: 4rem;
-   position: relative;
-   overflow-x: hidden;}
+   background-color: #e4e4e4;}
+
+img {
+   max-width: 100%;}
 
 .container-shadow {
    box-shadow: 0 2px 20px hsla(0,0%,0%,.15);}
@@ -20,18 +20,58 @@ body {
 .noselect {
    user-select: none;}
 
+.button {
+   text-transform: uppercase;
+   text-align: center;
+   background-color: hsla(0,0%,0%,0);
+   color: #949494;
+   margin: 0 .5rem;
+   padding: 1rem 2rem;
+   border: 1px solid #9b9a9a;
+   border-radius: 30rem;
+   display: inline-block;
+   cursor: pointer;
+   transition: color 200ms ease,
+               border-color 200ms ease;}
+
+.button:hover {
+   color: #777777;
+   border-color: #777777;} 
+
+.buttons-container {
+   text-align: center;
+   margin: 3rem 0;}
+
+/*    PAINT CANVAS   */
+.canvas-container {
+   width: 100%;
+   margin-top: 4rem;
+   position: relative;
+   overflow-x: hidden;}
+
+.canvas-container canvas {
+   background-color: white;
+   margin: 0 auto;
+   display: block;}
+
 /*    PANEL    */
 .panel {
    background-color: white;
+   width: 22rem;
    min-height: 20rem;
    height: 60rem;
    padding: 3rem;
    position: absolute;
    top: 0;
-   transition: transform 200ms ease;}
+   transition: transform 200ms ease;
+   overflow: hidden;}
 
 .panel__section {
-   margin-bottom: 2.5rem;}
+   text-align: center;
+   height: 100%;
+   margin-bottom: 2.5rem;
+   overflow-y: auto;
+   overflow-x: hidden;}
 
 .panel__heading {
    font-weight: normal;
@@ -67,7 +107,7 @@ body {
 .paint-controls__select {
    padding: .5rem 1.6rem;
    border-radius: 6rem;
-   display: block;}
+   display: inline-block;}
 
 .paint-controls__color-list {
    text-align: center;}
@@ -93,10 +133,4 @@ body {
    border-top-left-radius: 10px;
    border-bottom-left-radius: 10px;
    right: 0;}
-
-/*    PAINT CANVAS   */
-.canvas-container canvas {
-   background-color: white;
-   margin: 4rem auto;
-   display: block;}
 

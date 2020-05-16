@@ -25,6 +25,10 @@ const canvas = document.querySelector("#canvas");
 const ctx = canvas.getContext("2d");
 let canDraw = false;
 
+// Set canvas´ background color
+ctx.fillStyle = "white";
+ctx.fillRect(0, 0, canvas.clientWidth, canvas.clientHeight);
+
 // Mouse events
 canvas.addEventListener("mousedown", (e) => {
    canDraw = true;
@@ -72,18 +76,37 @@ function changeColor(e) {
 }
 
 // Reset canvas
-document.querySelector("#reset-button").addEventListener("click", () => ctx.clearRect(0, 0, canvas.clientWidth, canvas.clientHeight));
+document.querySelector("#reset-button").addEventListener("click", () => {
+   ctx.fillStyle = "white";
+   ctx.fillRect(0, 0, canvas.clientWidth, canvas.clientHeight);
+});
 
 // Save draw
-const userImages = document.querySelector("#user-images");
+const generateBtn = document.querySelector("#create-img-button");
+const drawUl =  document.querySelector("#draws-list");
 
-document.querySelector("#create-img-button").addEventListener("click", () => {
-   const newImg = document.createElement("img");
+generateBtn.addEventListener("click", generateDraw);
 
-   newImg.src = canvas.toDataURL();
+function generateDraw() {
+   // Creates a LI, A and IMG elements.
+   let imgUrl = canvas.toDataURL();
 
-   userImages.appendChild(newImg);
-});
+   const li = document.createElement("li");
+   li.className = "user-draws__li";
+
+   const a = document.createElement("a");
+   a.className = "user-draws__a";
+   a.href = imgUrl;
+   a.target = "_blank";
+
+   const img = document.createElement("img");
+   img.className = "user-draws__img";
+   img.src = imgUrl;
+
+   a.appendChild(img);
+   li.appendChild(a);
+   drawUl.appendChild(li);
+}
 
 /*
  * CLOSE / OPEN PANEL

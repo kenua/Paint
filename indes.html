@@ -7,50 +7,54 @@
    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-   <aside class="panel paint-controls-container container-shadow">
-      <div class="panel__close-button panel__close-button--right" id="left-panel"></div>
+   <div class="canvas-container">
+      <!-- Left panel -->
+      <aside class="panel paint-controls-container container-shadow">
+         <div class="panel__close-button panel__close-button--right" id="left-panel"></div>
+         
+         <div class="paint-controls__content">
+            <section class="panel__section">
+               <h2 class="panel__heading">Sizes</h2>
+               <select class="paint-controls__select" id="sizes">
+                  <option value="5">5</option>
+                  <option value="10" selected>10</option>
+                  <option value="16">16</option>
+                  <option value="20">20</option>
+                  <option value="40">40</option>
+               </select>
+            </section>
       
-      <div class="paint-controls__content">
-         <section class="panel__section">
-            <h2 class="panel__heading">Sizes</h2>
-            <select class="paint-controls__select" id="sizes">
-               <option value="5">5</option>
-               <option value="10" selected>10</option>
-               <option value="16">16</option>
-               <option value="20">20</option>
-               <option value="40">40</option>
-            </select>
-         </section>
+            <section class="panel__section">
+               <h2 class="panel__heading">Color</h2>
+               <ul class="paint-controls__color-list" id="color-list">
+                  <li> <div class="colors__item" data-color="#eb3b5a"></div> </li>
+                  <li> <div class="colors__item" data-color="#3867d6"></div> </li>
+                  <li> <div class="colors__item" data-color="#fed330"></div> </li>
+                  <li> <div class="colors__item" data-color="#8854d0"></div> </li>
+                  <li> <div class="colors__item" data-color="#26de81"></div> </li>
+                  <li> <div class="colors__item colors__item--selected" data-color="#000"></div> </li>
+                  <li> <div class="colors__item" data-color="#fff"></div> </li>
+               </ul>
+            </section>
+         </div><!--.paint-controls__content-->
+      </aside><!--.paint-controls-container-->
+
+      <!-- Right panel -->
+      <aside class="panel user-draws-container container-shadow">
+         <div class="panel__close-button panel__close-button--left" id="right-panel"></div>
    
          <section class="panel__section">
-            <h2 class="panel__heading">Color</h2>
-            <ul class="paint-controls__color-list" id="color-list">
-               <li> <div class="colors__item" data-color="#eb3b5a"></div> </li>
-               <li> <div class="colors__item" data-color="#3867d6"></div> </li>
-               <li> <div class="colors__item" data-color="#fed330"></div> </li>
-               <li> <div class="colors__item" data-color="#8854d0"></div> </li>
-               <li> <div class="colors__item" data-color="#26de81"></div> </li>
-               <li> <div class="colors__item colors__item--selected" data-color="#000"></div> </li>
-               <li> <div class="colors__item" data-color="#fff"></div> </li>
+            <h2 class="panel__heading">Your draws</h2>
+            <ul class="user-dras__ul" id="draws-list">
+               <!-- 
+                  Al picar Generate image va a crear un LI, A y IMG.
+                  La dirección de A va a ser la imagen generada.
+               -->
+               <!-- This panel shows the draws of the user has created -->
             </ul>
          </section>
-      </div><!--.paint-controls__content-->
-   </aside><!--.paint-controls-container-->
+      </aside><!--.user-draws-container-->
 
-   <aside class="panel user-draws-container container-shadow">
-      <div class="panel__close-button panel__close-button--left" id="right-panel"></div>
-
-      <section class="panel__section">
-         <h2 class="panel__heading">Your draws</h2>
-         <ul class="user-dras__ul" id="draws-list">
-            <li class="user-draws__li"> <img src="" alt="A draw" class="user-draws__img"> </li>
-            <!-- This panel shows the draws of the user has created -->
-         </ul>
-      </section>
-      </div>
-   </aside><!--.user-draws-container-->
-
-   <div class="canvas-container">
       <canvas class="container-shadow" id="canvas" width="800" height="600"></canvas>
    </div><!--.canvas-container-->
 
@@ -59,10 +63,8 @@
       <div id="create-img-button" class="button">Generate image</div>
    </div>
 
-   <div class="images" id="user-images">
 
-
-   </div>
+   <div class="images" id="user-images"></div>
    <script src="paint.js"></script>
 </body>
 </html>
