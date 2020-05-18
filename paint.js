@@ -1,22 +1,5 @@
 "use strict";
 
-let pixelM = (function() {
-   let size = 10;
-   let color = "black";
-
-   const draw = (x, y) => {
-      ctx.beginPath();
-      ctx.fillStyle = color;
-      ctx.fill();
-      ctx.fillRect(x - (size / 2), y - (size / 2), size, size);
-   };
-
-   const changePixelColor = (newColor) => color = newColor;
-   const changePixelSize = (newSize) => size = newSize;   
-
-   return {draw, changePixelColor, changePixelSize};
-})();
-
 /*
  * SETUP CANVAS
 */
@@ -43,6 +26,40 @@ canvas.addEventListener("mousemove", (e) => {
 
 canvas.addEventListener("mouseout", () => canDraw = false);
 
+let pixelM = (function() {
+   let size = 10;
+   let color = "black";
+   let actualShape = "rect";
+
+   const changePixelColor = (newColor) => color = newColor;
+   const changePixelSize = (newSize) => size = newSize;
+   const changeShape = () => actualShape = (actualShape == "rect") ? "arc" : "rect";
+
+   const shape = (setShape) => {
+      if(setShape == "rect") {
+         return function(x, y, size) {
+            ctx.fillRect(x - (size / 2), y - (size / 2), size, size);
+         }
+      } else if(setShape == "arc") {
+         return function(x, y, size) {
+            ctx.arc(x, y, (size / 2), 0, Math.PI * 2);
+         }
+      }
+   }
+
+   const draw = (x, y) => {
+      ctx.beginPath();
+      ctx.fillStyle = color;
+      shape(actualShape)(x, y, size);
+      ctx.fill();
+
+
+      //ctx.fillRect(x - (size / 2), y - (size / 2), size, size);
+   };   
+
+   return {changePixelColor, changePixelSize, changeShape, draw};
+})();
+
 /*
  * CONTROLS
 */
@@ -50,6 +67,12 @@ canvas.addEventListener("mouseout", () => canDraw = false);
 // Change size
 const sizeOption = document.querySelector("#sizes");
 sizeOption.addEventListener("input", (e) => pixelM.changePixelSize(e.target.value));
+
+// Change shape
+document.querySelector("#shape-button").addEventListener("click", (e) => {
+   e.preventDefault();
+   pixelM.changeShape();
+});
 
 // Set background color to the color buttons 
 const colorItems = document.querySelectorAll(".colors__item");

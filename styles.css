@@ -105,15 +105,19 @@ img {
    left: 0;}
 
 .paint-controls__select {
+   margin-bottom: 1rem;
    padding: .5rem 1.6rem;
    border-radius: 6rem;
    display: inline-block;}
+
+.panel__button {
+   text-decoration: none;
+   margin: 0;}
 
 .paint-controls__color-list {
    text-align: center;}
 
 .colors__item {
-   margin-bottom: 1rem;
    padding: 2rem;
    border: 2px solid #b6b6b6;
    border-radius: 6rem;
